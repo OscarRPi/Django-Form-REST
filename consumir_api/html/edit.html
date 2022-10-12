@@ -1,0 +1,65 @@
+<!DOCTYPE html>  
+<html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>{% block title %}{% endblock %}</title>
+        {% load static %}  
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" id="bootstrap-css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    </head> 
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Editar usuario</h3>
+                    <form method="POST" class="post-form" action="/update/{{user.id_usuario}}">  
+                        {% csrf_token %}  
+                        <div class="container">  
+                            <br>   
+                            <div class="form-group row">  
+                                <label class="col-sm-2 col-form-label">Nombres:</label>  
+                                <div class="col-sm-4">  
+                                    <input type="text" class="form-control" name="nombres" id="id_nombres" required maxlength="40" value="{{ user.nombres }}" />  
+                                </div>  
+                            </div>  
+                            <div class="form-group row">  
+                                <label class="col-sm-2 col-form-label">Apellidos:</label>  
+                                <div class="col-sm-4">  
+                                    <input type="text" class="form-control" name="apellidos" id="id_apellidos" required maxlength="40" value="{{ user.apellidos }}" />  
+                                </div>  
+                            </div> 
+                            <div class="form-group row">  
+                                <label class="col-sm-2 col-form-label">Correo:</label>  
+                                <div class="col-sm-4">  
+                                    <input type="email" class="form-control" name="correo" id="id_correo" required maxlength="40" value="{{ user.correo }}" />  
+                                </div>  
+                            </div>  
+                            <div class="form-group row">  
+                                <label class="col-sm-2 col-form-label">Ciudad:</label>  
+                                <div class="col-sm-4">  
+                                    <input type="text" class="form-control" name="ciudad" id="id_ciudad" required maxlength="40" value="{{ user.ciudad }}" />  
+                                </div>  
+                            </div>  
+                            <div class="form-group row">  
+                                <label class="col-sm-1 col-form-label"></label>  
+                                <div class="col-sm-4">  
+                                    <button type="submit" class="btn btn-success btn-lg">Actualizar</button>  
+                                </div>  
+                            </div>  
+                        </div>  
+                    </form>
+                </div>  
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $('#data_users_table').DataTable();
+            } );
+        </script>
+    </body> 
+</html>
